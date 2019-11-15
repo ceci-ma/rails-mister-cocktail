@@ -36,7 +36,7 @@ class CocktailsController < ApplicationController
 
   def destroy
     @cocktail.delete
-    redirect_to cocktails_path
+    redirect_to root_path
   end
 
   private
