@@ -1,0 +1,14 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1509807995916-c332365e2d9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2771&q=80);">
+  <div class="container">
+    <h1>Your very own <strong>cocktail book</strong> !</h1>
+    <p>Get creative with your drinks!</p>
+    <a class="btn btn-flat" href="#"></a>
+  </div>
+</div>
+<div class="cards">
+<% @cocktails.each do |cocktail| %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/200/300/?blur)">
+    <%= link_to cocktail.name, cocktail %>
+  </div>
+<% end %>
+</div>
