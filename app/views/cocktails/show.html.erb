@@ -1,19 +1,35 @@
-<h1><%= @cocktail.name %></h1>
-<%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-
-<h2>Ingredients</h2>
-
-<% @cocktail.doses.each do |dose| %>
-<p><%= dose.description %> <%= dose.ingredient.name %> | <%= link_to 'Delete ingredient', dose, method: :delete, class: "btn btn-ghost" %>
- </p>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo.key, height: 300, width: 400, crop: :fill %>');">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+    <%= link_to 'Edit', edit_cocktail_path(@cocktail),class: " btn btn-flat" %>
+    <%= link_to 'Destroy', cocktail_path(@cocktail), method: :delete, class: "m-3 btn btn-flat" %>
+  </div>
+</div>
 
 
-<%= link_to 'Add ingredient to cocktail', new_cocktail_dose_path(@cocktail), class: "btn btn-ghost"%>
+<div class="container d-flex">
+
+  <div class="description m-4">
+    <h2>Description</h2>
+    <p><strong>Blend</strong>: <%= @cocktail.description %> </p>
+
+  </div>
+
+  <div class="ingredients m-4">
+    <h2>Ingredients</h2>
+
+    <% @cocktail.doses.each do |dose| %>
+    <p> <strong><%= dose.ingredient.name %></strong>: <%= dose.description %>   <%= link_to '', dose, method: :delete, class: "far fa-trash-alt" %>
+     </p>
+    <% end %>
+
+
+    <%= link_to 'Add ingredient to cocktail', new_cocktail_dose_path(@cocktail), class: "btn btn-ghost"%>
 
 
 
-<%= link_to 'Edit', edit_cocktail_path(@cocktail),class: "btn btn-ghost" %>
-<%= link_to 'Destroy', cocktail_path(@cocktail), method: :delete, class: "btn btn-ghost" %>
-<%= link_to 'Back', root_path, class: "btn btn-ghost" %>
+    <%= link_to 'Back', root_path, class: "btn btn-ghost" %>
+
+  </div>
+</div>
 

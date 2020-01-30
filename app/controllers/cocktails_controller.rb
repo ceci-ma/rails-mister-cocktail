@@ -1,14 +1,13 @@
 class CocktailsController < ApplicationController
 
-    before_action :find_cocktail, only: [:show, :edit, :update, :destroy]
-
+  before_action :find_cocktail, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @cocktails = Cocktail.all
   end
 
-  def show
-  end
+  def showend
 
   def new
     @cocktail = Cocktail.new
@@ -46,7 +45,7 @@ class CocktailsController < ApplicationController
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :photo)
+    params.require(:cocktail).permit(:name, :photo, :description)
   end
 end
 
